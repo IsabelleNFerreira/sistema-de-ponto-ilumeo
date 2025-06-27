@@ -1,0 +1,8 @@
+# Ignorar dependências do frontend
+/frontend/node_modules/
+
+# (opcional) Ignorar dependências do backend também
+/backend/node_modules/
+
+# Outros arquivos comuns que podem ser ignorados
+.env
