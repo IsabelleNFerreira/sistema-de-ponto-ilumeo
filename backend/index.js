@@ -1,13 +1,4 @@
-import express, { json } from 'express';
-import cors from 'cors';
-const app = express();
-
-app.use(cors());
-app.use(json());
-
-app.get('/', (req, res) => {
-  res.send('API rodando 🎉');
-});
+import app from './src/app.js';
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
