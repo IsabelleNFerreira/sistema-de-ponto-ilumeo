@@ -20,3 +20,22 @@ export const registrarPonto = async (req, res) => {
         res.status(500).json({ erro: 'Erro ao registrar ponto', detalhes: err.message });
     }
 };
+
+import { atualizarRegistro } from '../models/registroModel.js';
+
+export const editarRegistro = async (req, res) => {
+    const { id } = req.params;
+    const { saida, comentario, total_horas } = req.body;
+
+    try {
+        const registroAtualizado = await atualizarRegistro(id, saida, comentario, total_horas);
+
+        if (!registroAtualizado) {
+            return res.status(404).json({ erro: 'Registro não encontrado' });
+        }
+
+        res.json(registroAtualizado);
+    } catch (error) {
+        res.status(500).json({ erro: 'Erro ao atualizar registro', detalhes: error.message });
+    }
+};

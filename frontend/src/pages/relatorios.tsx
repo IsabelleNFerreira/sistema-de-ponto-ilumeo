@@ -32,6 +32,7 @@ export default function Relatorios() {
                     style={{ minWidth: '700px' }} // min-width para que as colunas não encolham demais
                 >
                     {/* <Column field="id" header="ID" /> */}
+                    <Column field="id" header="ID" />
                     <Column field="email" header="Usuário" />
                     <Column field="entrada" header="Entrada" />
                     <Column field="saida" header="Saída" />
