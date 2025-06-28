@@ -2,7 +2,7 @@ import database from '../config/database.js';
 
 export const listarRegistros = async () => {
     const result = await database.query(`
-    SELECT r.id, r.entrada, r.saida, r.comentario, u.email
+    SELECT r.id, r.entrada, r.saida, r.comentario, u.email, total_horas
     FROM registros r
     JOIN usuarios u ON r.usuario_id = u.id
     ORDER BY r.entrada DESC

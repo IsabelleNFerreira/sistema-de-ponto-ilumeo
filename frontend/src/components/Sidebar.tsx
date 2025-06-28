@@ -1,4 +1,3 @@
-// src/App.jsx
 import { Menubar } from 'primereact/menubar';
 import { PanelMenu } from 'primereact/panelmenu';
 import { Button } from 'primereact/button';

@@ -9,11 +9,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import AppLayout from './App.js';
-import RegistroPonto from './components/registro-ponto.jsx';
+import AppLayout from './components/Sidebar.js';
+import RegistroPonto from './pages/registro-ponto.js';
+import Relatorios from './pages/relatorios.js';
 
 // Você pode criar outros componentes como Relatórios depois
-const Relatorios = () => <div>📊 Em breve: Relatórios!</div>;
+// const Relatorios = () => <div>📊 Em breve: Relatórios!</div>;
 const Login = () => <div>📊 Em breve: Login!</div>;
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
