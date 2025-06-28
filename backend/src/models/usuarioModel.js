@@ -13,7 +13,6 @@ export const buscarTodosUsuarios = async () => {
     return result.rows;
 };
 
-
 export const buscarPorEmail = async (email) => {
     const result = await database.query(
         'SELECT * FROM usuarios WHERE email = $1',
