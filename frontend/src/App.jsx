@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import { Menubar } from 'primereact/menubar';
+import { PanelMenu } from 'primereact/panelmenu';
+import { Button } from 'primereact/button';
+import { Outlet, useNavigate } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function AppLayout() {
+  const navigate = useNavigate();
+
+  const start = <span className="text-xl font-bold">Sistema de Ponto</span>;
+  const end = (
+    <span className="text-white font-medium mr-4">👤 Isabelle Nunes</span>
+  );
+
+  const sidebarItems = [
+    {
+      label: 'Registro de Ponto',
+      icon: 'pi pi-clock',
+      command: () => navigate('/registro-ponto')
+    },
+    {
+      label: 'Relatórios',
+      icon: 'pi pi-chart-bar',
+      command: () => navigate('/relatorios')
+    }
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen flex flex-column">
+      <Menubar start={start} end={end} className="shadow-2" />
 
-export default App
+      <div className="flex flex-1">
+        <div className="w-18rem border-right-1 surface-border p-3">
+          <PanelMenu model={sidebarItems} className="w-full" />
+          <div className="mt-4">
+            <Button
+              label="Sair"
+              icon="pi pi-sign-out"
+              className="p-button-danger p-button-text"
+              onClick={() => {
+                console.log("Logout...");
+                navigate('/login');
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="flex-1 p-4">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
+}
