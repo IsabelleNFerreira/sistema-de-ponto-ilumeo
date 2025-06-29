@@ -10,7 +10,7 @@ export const obterRegistros = async (req, res) => {
 };
 
 export const registrarPonto = async (req, res) => {
-    const { usuario_id, entrada} = req.body;
+    const { usuario_id, entrada } = req.body;
 
     try {
         const novoRegistro = await criarRegistro(usuario_id, entrada);

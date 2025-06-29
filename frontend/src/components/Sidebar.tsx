@@ -8,7 +8,7 @@ export default function AppLayout() {
 
     const start = <span className="text-xl font-bold">Sistema de Ponto</span>;
     const end = (
-        <span className="text-white font-medium mr-4">👤 Isabelle Nunes</span>
+        <span className="text-white font-medium mr-4">👤 Usuario</span>
     );
 
     const sidebarItems = [

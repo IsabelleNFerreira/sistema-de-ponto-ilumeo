@@ -53,9 +53,6 @@ export default function Relatorios() {
                     emptyMessage="Nenhum registro encontrado."
                     style={{ minWidth: '1000px' }}
                 >
-                    {/* <Column field="id" header="ID" /> */}
-                    <Column field="id" header="ID" />
-                    <Column field="email" header="Usuário" />
                     <Column
                         field="entrada"
                         header="Entrada"
