@@ -12,6 +12,8 @@ export default function RegistroPonto() {
     const [checkIn, setCheckIn] = useState<Date | null>(null);
     const [checkOut, setCheckOut] = useState<Date | null>(null);
     const [registroId, setRegistroId] = useState<number | null>(null);
+    const [tempoTrabalho, setTempoTrabalho] = useState('');
+
 
     const [comentario, setComentario] = useState('');
     const [popupVisible, setPopupVisible] = useState(false);
@@ -31,6 +33,29 @@ export default function RegistroPonto() {
         if (idSalvo) setRegistroId(Number(idSalvo));
         return () => clearInterval(timer);
     }, []);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            if (checkIn && !checkOut) {
+                const agora = new Date();
+                const diff = agora.getTime() - checkIn.getTime();
+
+                const horas = Math.floor(diff / (1000 * 60 * 60));
+                const minutos = Math.floor((diff / (1000 * 60)) % 60);
+                const segundos = Math.floor((diff / 1000) % 60);
+
+                const tempo = `${horas.toString().padStart(2, '0')}:${minutos
+                    .toString()
+                    .padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+
+                setTempoTrabalho(tempo);
+            } else {
+                setTempoTrabalho('');
+            }
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [checkIn, checkOut]);
 
     const formatarHora = (data: Date | null) => {
         if (!data) return '—';
@@ -99,13 +124,40 @@ export default function RegistroPonto() {
                 title="📅 Registro de Ponto"
                 className="w-full md:w-8 lg:w-6 mx-auto"
             >
-                <div className="text-center mb-3">
-                    <p className="text-xl font-bold">🕒 Hora atual:</p>
-                    <p className="text-2xl text-primary">
-                        {horaAtual.toLocaleTimeString('pt-BR')}
-                    </p>
-                </div>
+                <div className="flex justify-content-around align-items-center mb-3">
+                    <div className="text-center">
+                        <p className="text-xl font-bold">🕒 Hora atual:</p>
+                        <p className="text-2xl text-primary">
+                            {horaAtual.toLocaleTimeString('pt-BR')}
+                        </p>
+                    </div>
 
+                    <Divider layout="vertical" />
+
+                    <div className="text-center">
+                        <p className="text-xl font-bold">📌 Status:</p>
+                        <p
+                            className={`text-2xl font-semibold ${checkIn && !checkOut ? 'text-green-500' : 'text-gray-400'
+                                }`}
+                        >
+                            {checkIn && !checkOut ? (
+                                <>
+                                    <p className="text-green-600 font-semibold">
+                                        🟢 Trabalhando
+                                    </p>
+                                    <p className="text-sm text-gray-700">
+                                        Tempo: {tempoTrabalho}
+                                    </p>
+                                </>
+                            ) : (
+                                <p className="text-red-600 font-semibold">
+                                    🔴 Fora do expediente
+                                </p>
+                            )}
+                        </p>
+
+                    </div>
+                </div>
                 <Divider />
 
                 <div className="mb-3">
@@ -125,11 +177,14 @@ export default function RegistroPonto() {
                     <Button
                         label="Fazer Check-in"
                         icon="pi pi-sign-in"
+                        disabled={checkIn !== null && checkOut === null}
                         onClick={handleCheckIn}
                         className="p-button-success mr-2"
                     />
+
                     <Button
                         label="Fazer Check-out"
+                        disabled={!checkIn || checkOut !== null}
                         icon="pi pi-sign-out"
                         onClick={(e) => setPopupVisible(true)}
                         className="p-button-danger ml-2"
