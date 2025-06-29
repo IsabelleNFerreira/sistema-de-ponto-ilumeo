@@ -10,10 +10,10 @@ export const obterRegistros = async (req, res) => {
 };
 
 export const registrarPonto = async (req, res) => {
-    const { usuario_id, entrada, saida, comentario } = req.body;
+    const { usuario_id, entrada} = req.body;
 
     try {
-        const novoRegistro = await criarRegistro(usuario_id, entrada, saida, comentario);
+        const novoRegistro = await criarRegistro(usuario_id, entrada);
         res.status(201).json(novoRegistro);
     } catch (err) {
         console.error(err);
