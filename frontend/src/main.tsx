@@ -18,15 +18,15 @@ import Relatorios from './pages/relatorios.js';
 const Login = () => <div>📊 Em breve: Login!</div>;
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AppLayout />}>
-          <Route path="registro-ponto" element={<RegistroPonto />} />
-          <Route path="relatorios" element={<Relatorios />} />
-           <Route path="login" element={<Login />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<AppLayout />}>
+                    <Route path="registro-ponto" element={<RegistroPonto />} />
+                    <Route path="relatorios" element={<Relatorios />} />
+                    <Route path="login" element={<Login />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>
 );

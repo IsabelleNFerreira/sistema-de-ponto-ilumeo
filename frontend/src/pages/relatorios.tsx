@@ -8,9 +8,10 @@ export default function Relatorios() {
     const [registros, setRegistros] = useState<Registro[]>([]);
 
     useEffect(() => {
-        registroService.listarRegistros()
+        registroService
+            .listarRegistros()
             .then(setRegistros)
-            .catch(err => console.error('Erro ao buscar registros:', err));
+            .catch((err) => console.error('Erro ao buscar registros:', err));
     }, []);
 
     const formatarData = (dataISO: string | null | undefined) => {
