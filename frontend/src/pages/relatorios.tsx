@@ -24,11 +24,23 @@ export default function Relatorios() {
         });
     };
 
+    const formatarHorasDecimais = (valor: number): string => {
+        const horas = Math.floor(valor);
+        const minutos = Math.round((valor - horas) * 60);
+
+        const partes = [];
+
+        if (horas > 0) partes.push(`${horas}h`);
+        if (minutos > 0 || horas === 0) partes.push(`${minutos}min`);
+
+        return partes.join(' ');
+    };
+
     return (
-        <div className="p-2" >
+        <div className="card">
             <h2 className="text-xl font-bold mb-4">Relatório de Registros</h2>
 
-            <div style={{ overflowX: 'auto' }}>
+            <div style={{ width: '100%', overflowX: 'auto' }}>
                 <DataTable
                     value={registros}
                     scrollable
@@ -39,7 +51,7 @@ export default function Relatorios() {
                     paginator
                     rows={20}
                     emptyMessage="Nenhum registro encontrado."
-                    style={{ minWidth: '700px' }}
+                    style={{ minWidth: '1000px' }}
                 >
                     {/* <Column field="id" header="ID" /> */}
                     <Column field="id" header="ID" />
@@ -54,8 +66,28 @@ export default function Relatorios() {
                         header="Saída"
                         body={(rowData) => formatarData(rowData.saida)}
                     />
-                    <Column field="comentario" header="Comentário" />
-                    <Column field="total_horas" header="Horas trabalhadas no dia" />
+                    <Column
+                        field="total_horas"
+                        header="Horas trabalhadas no dia"
+                        body={(rowData) =>
+                            formatarHorasDecimais(rowData.total_horas)
+                        }
+                    />
+                    <Column
+                        field="comentario"
+                        header="Comentário"
+                        body={(rowData) => (
+                            <div
+                                style={{
+                                    whiteSpace: 'normal',
+                                    wordBreak: 'break-word',
+                                }}
+                            >
+                                {rowData.comentario}
+                            </div>
+                        )}
+                        style={{ maxWidth: '500px' }}
+                    />
                 </DataTable>
             </div>
         </div>
