@@ -3,6 +3,7 @@ import { Registro } from '../models/registroModel';
 
 const API_BASE = 'http://localhost:5000/api';
 
+
 function getDataHoraLocalISO(): string {
     const agora = new Date();
     const offsetMs = agora.getTimezoneOffset() * 60000;

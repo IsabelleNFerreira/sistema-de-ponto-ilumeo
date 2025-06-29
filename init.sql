@@ -1,0 +1,14 @@
+-- CREATE TABLE registros (
+--     id SERIAL PRIMARY KEY,
+--     usuario_id INTEGER NOT NULL,
+--     entrada TIMESTAMP NOT NULL,
+--     saida TIMESTAMP,
+--     total_horas NUMERIC(5,2),
+--     comentario TEXT
+-- );
+
+-- CREATE TABLE usuarios (
+--     id SERIAL PRIMARY KEY,
+--     email VARCHAR(255) NOT NULL,
+--     senha VARCHAR(255) NOT NULL
+-- );
