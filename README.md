@@ -59,6 +59,7 @@ Antes de rodar o projeto, você precisa ter os seguintes softwares instalados na
 ## 🐘 Configuração do banco de dados
 
 Você precisa ter o **PostgreSQL** instalado e rodando.
+É necessario criar as tabelas com os nomes corretos e adicionar um dado na tabela de Usuarios para ser possível fazer o registro de ponto ao usar a tela.
 
 ### 1. Abra o pgAdmin
 
@@ -79,7 +80,7 @@ Se for seu primeiro acesso, será necessário criar uma conexão com o servidor 
 
 ---
 
-### 3. Crie um banco de dados chamado `sistema_ponto`
+### 3. Crie um banco de dados chamado `registro_ponto`
 
 1. No menu lateral, expanda seu servidor > clique com o botão direito em **Databases** > **Create > Database**
 2. Defina o nome: `registro_ponto`
