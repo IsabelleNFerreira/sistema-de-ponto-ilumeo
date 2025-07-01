@@ -1,5 +1,11 @@
 # 🕒 Sistema de Registro de Ponto
 
+> No projeto é possivel fazer as seguintes operações:
+> - Visualização atualizada das horas trabalhadas no dia atual
+> - Possibilidade de iniciar ou finalizar um turno
+> - Adicionar um comentário complementar ao turno antes de finalizá-lo
+> - Acompanhamento do total de horas trabalhadas nos dias anteriores
+
 ![Sistema de Ponto - Google Chrome 2025-06-29 20-23-52](https://github.com/user-attachments/assets/8c18e995-c13c-4ac1-9b93-3761fe5e3143)
 
 ## Link para o protótipo no Figma
